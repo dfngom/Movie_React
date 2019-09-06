@@ -22,7 +22,7 @@ class App extends Component {
       movies: [
         {
           title: 'Creative Ones',
-          img: 'https://www.creative-ones.com/assets/blog/2016/09/aEsti-pregatit-pentru-viitor-Internet-of-Things-IoT-este-tot-mai-aproape-de-tine.jpg" className="card-img-top',
+          img: 'https://www.creative-ones.com/assets/blog/2016/09/aEsti-pregatit-pentru-viitor-Internet-of-Things-IoT-este-tot-mai-aproape-de-tine.jpg',
           details: 'R | 175 min | Crime, Technologies',
           description: `These days it plays on the screen I.T. with Pierce Brosnan in the lead role. Like any American film, there are a number of reviews that catalog it as a poor film, but there are also some good reviews.
           We live in the smart era of technology and custom applications. We have smartphone, smart TV, smartwatch. We want everything around us to be smarter and give us more comfort.`,
@@ -55,7 +55,7 @@ class App extends Component {
         <Header />
         <div className="d-flex flex-row flex-fill pt-4 p-2">
           <MovieList />
-          <MovieDetails />
+          <MovieDetails movie={this.state.movies[this.state.selectedMovie]} />
         </div>
       </div>
     );
