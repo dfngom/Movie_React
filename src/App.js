@@ -2,20 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Header, MovieDetails, MovieList, Loading } from './components';
-import dataMovies from './data';
 import apiMovie from './config/api.movie';
 
-// function App() {
-//   return (
-//     <div className="App d-flex flex-column">
-//       <Header />
-//       <div className="d-flex flex-row flex-fill pt-4 p-2">
-//         <MovieList />
-//         <MovieDetails />
-//       </div>
-//     </div>
-//   );
-// }
+
 class App extends Component {
 
   constructor(props) {
@@ -26,18 +15,10 @@ class App extends Component {
       loaded: false
     }
 
-    setTimeout(() => {
-      this.setState({
-        movies: dataMovies,
-        loaded: true
-      })
-    }, 200)
+
   }
 
   updateSelectedMovie = (index) => {
-    // const index = this.state.movies.findIndex((m) => {
-    //   return title === m.title;
-    // })
     this.setState({
       selectedMovie: index
     })
@@ -45,9 +26,29 @@ class App extends Component {
 
   componentDidMount() {
     apiMovie.get('/discover/movie')
-      .then(response => console.log(response))
-      .then(err => console.log(err));
+      .then(response => response.data.results)
+      .then(moviesApi => {
+
+        const movies = moviesApi.map(m => ({
+          img: 'https://image.tmdb.org/t/p/w500' + m.poster_path,
+          title: m.title,
+          details: `${m.release_date} | ${m.vote_average}/10 (${m.vote_count})`,
+          description: m.overview
+        }))
+        console.log(movies);
+        console.log(moviesApi);
+        this.updateMovies(movies);
+      })
+      .catch(err => console.log(err));
   }
+
+  updateMovies(movies) {
+    this.setState({
+      movies,
+      loaded: true
+    })
+  }
+
   render() {
     return (
       <div className="App d-flex flex-column">
