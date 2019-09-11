@@ -74,3 +74,6 @@ Installation npm
 $npm install npm@latest -g
 Desinstallation npm
 $npm uninstall npm -g
+
+Intallation d'axios pour http
+$ npm i axios

@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Header, MovieDetails, MovieList, Loading } from './components';
 import dataMovies from './data';
+import apiMovie from './config/api.movie';
 
 // function App() {
 //   return (
@@ -40,6 +41,12 @@ class App extends Component {
     this.setState({
       selectedMovie: index
     })
+  }
+
+  componentDidMount() {
+    apiMovie.get('/discover/movie')
+      .then(response => console.log(response))
+      .then(err => console.log(err));
   }
   render() {
     return (
