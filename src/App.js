@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import { Header, MovieDetails, MovieList, Loading, SearchBar } from './components';
+import { Header } from './components';
 import { apiMovie, apiMovieMap } from './config/api.movie';
+import Films from './features/film';
 
 
 class App extends Component {
@@ -46,15 +47,13 @@ class App extends Component {
     return (
       <div className="App d-flex flex-column">
         <Header />
-        <SearchBar updateMovies={this, this.updateMovies} />
-        {this.state.loaded ? (
-          <div className="d-flex flex-row flex-fill pt-4 p-2">
-            <MovieList movies={this.state.movies} updateSelectedMovie={this.updateSelectedMovie} />
-            <MovieDetails movie={this.state.movies[this.state.selectedMovie]} />
-          </div>
-        ) : (
-            <Loading />
-          )}
+        <Films
+          loaded={this.state.loaded}
+          updateMovies={this.updateMovies}
+          updateSelectedMovie={this.updateSelectedMovie}
+          movies={this.state.movies}
+          selectedMovie={this.state.selectedMovie}
+        />
       </div>
     );
   }

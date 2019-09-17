@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { MovieElement } from '..'
+import React, { Component } from 'react';
+import MovieElement from './movieElement/MovieElement';
 
 export default class MovieList extends Component {
 
