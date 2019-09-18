@@ -113,6 +113,8 @@ class App extends Component {
             <Route path="/favoris" render={(props) => {
               return (
                 <Favoris
+                  {...props}
+                  loaded={this.state.loaded}
                   favoris={this.state.favoris}
                   removeFavori={this.removeFavori}
                 />
