@@ -6,6 +6,7 @@ import { apiMovie, apiMovieMap } from './config/api.movie';
 import Films from './features/film';
 import Favoris from './features/favoris';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { FavoriList } from './features/favoris/components';
 
 
 class App extends Component {
@@ -84,7 +85,14 @@ class App extends Component {
                 />
               )
             }} />
-            <Route path="/favoris" Component={Favoris} />
+            <Route path="/favoris" render={(props) => {
+              return (
+                <Favoris
+                  favoris={this.state.favoris}
+                  removeFavori={this.removeFavori}
+                />
+              )
+            }} />
             <Redirect to="/films" />
           </Switch>
 
