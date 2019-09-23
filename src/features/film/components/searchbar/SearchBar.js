@@ -31,11 +31,17 @@ export default class SearchBar extends Component {
     //     //     })
     //     //     .catch(err => console.log(err));
     // }
+
+    getInitialValues = () => {
+        return { query: '', language: 'fr-FR' };
+    }
+
     render() {
         return (
             <Formik
                 onSubmit={this.submit}
-                initialValues={{ query: '', language: 'fr-FR' }}
+                initialValues={this.getInitialValues()}
+                enableReinitialize={true}
             >
                 {({ handleSubmit, handlechange, handleBlur, isSubmitting }) => (
                     <form className="d-flex flex-row p-2 m-2" onSubmit={handleSubmit}>
