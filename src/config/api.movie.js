@@ -1,7 +1,7 @@
 import * as axios from 'axios';
 
 
-export const apiMovie = axios.create({
+const apiMovie = axios.create({
     // baseURL: 'https://api.themoviedb.org/4'
 });
 
@@ -11,7 +11,9 @@ apiMovie.interceptors.request.use(req => {
     return req;
 });
 
-// export default apiMovie;
+export const apiMovie;
+
+
 
 export const apiMovieMap = (m) => ({
     img: 'https://image.tmdb.org/t/p/w500' + m.poster_path,
@@ -21,19 +23,12 @@ export const apiMovieMap = (m) => ({
 });
 
 
-// export default {
-//     searchMovies: filter => {
-//         const query =
-//             "?" +
-//             Object.keys(filter)
-//                 .map(k => `${k}=${filter[k]}&`)
-//                 .join("");
-
-//         return apiMovie
-//             .get("/search/movie" + query)
-//             .then(response => response.data.results)
-//             .then(moviesApi => moviesApi.map(apiMovieMap));
-//     }
-// }
-
+export default {
+    searchMovies: (filter) => {
+        const query = '?' + Object.keys(values).map(k => `${k}=${values[k]}&`).join('');
+        return apiMovie.get('/search/movie' + query)
+            .then(response => response.data.results)
+            .then(moviesApi => moviesApi.map(apiMovieMap))
+    }
+}
 
