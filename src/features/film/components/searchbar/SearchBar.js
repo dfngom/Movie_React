@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
 import { apiMovieMap, apiMovie } from '../../../../config/api.movie';
-// import searchMovies from '../../config/api.movie';
 
 export default class SearchBar extends Component {
     submit = (values, actions) => {
@@ -15,22 +14,6 @@ export default class SearchBar extends Component {
             })
             .catch(err => console.log(err));
     }
-    // submit = (values, actions) => {
-
-    //     // console.log(searchMovies.searchMovies);
-
-    //     searchMovies.searchMovies(values).then((movies) => {
-    //         console.log(movies);
-    //     })
-    //     //  apiMovie.get('/search/movie' + query)
-    //     //     .then(response => response.data.results)
-    //     //     .then(moviesApi => {
-    //     //         const movies = moviesApi.map(apiMovieMap);
-    //     //         this.props.updateMovies(movies);
-    //     //         actions.setSubmitting(false);
-    //     //     })
-    //     //     .catch(err => console.log(err));
-    // }
 
     getInitialValues = () => {
         return { query: '', language: 'fr-FR' };
