@@ -40,11 +40,7 @@ class App extends Component {
       })
       .catch(err => console.log(err));
 
-    apiFirebase.get('favoris.json')
-      .then(response => {
-        let favoris = response.data ? response.data : [];
-        this.updateFavoris(favoris);
-      })
+
   }
 
   updateMovies = (movies) => {
@@ -84,9 +80,6 @@ class App extends Component {
     })
   }
 
-  saveFavoris = () => {
-    apiFirebase.put('favoris.json', this.state.favoris);
-  }
 
 
   render() {
