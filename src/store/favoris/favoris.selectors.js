@@ -6,3 +6,8 @@ export const favorisListSelector = createSelector(
     [favorisSelector],
     favoris => favoris.data
 )
+
+export const favorisListNameSelector = createSelector(
+    [favorisSelector],
+    favorisData => favorisData.map(f => f.title)
+)
