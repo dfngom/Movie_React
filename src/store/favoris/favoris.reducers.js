@@ -1,5 +1,4 @@
 import * as actions from './favoris.actions';
-import { FastField } from 'formik';
 
 export default (state = {
     data: [],
@@ -36,6 +35,9 @@ export default (state = {
                 ...state,
                 error: action.error
             }
+        }
+        default: {
+            return state
         }
     }
 }

@@ -11,3 +11,8 @@ export const favorisListNameSelector = createSelector(
     [favorisSelector],
     favorisData => favorisData.map(f => f.title)
 )
+
+export const favorisIsLoadingSelector = createSelector(
+    [favorisSelector],
+    favoris => favoris.IsLoading
+)

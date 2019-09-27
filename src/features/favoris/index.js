@@ -3,7 +3,7 @@ import { FavoriList } from './components';
 import { Loading } from '../../components';
 import { connect } from 'react-redux';
 import { favorisListSelector, favorisIsLoadingSelector } from '../../store/selectors';
-import { tryRemoveFavoris } from '../../store/actions';
+import { tryRemoveFavori } from '../../store/actions';
 const Favoris = (props) => {
     return (
         <div className="d-flex flex-row flex-fill pt-4 p-2">

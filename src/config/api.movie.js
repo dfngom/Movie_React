@@ -1,7 +1,7 @@
 import * as axios from 'axios';
 
 
-const apiMovie = axios.create({
+export const apiMovie = axios.create({
     // baseURL: 'https://api.themoviedb.org/4'
 });
 
@@ -10,9 +10,6 @@ apiMovie.interceptors.request.use(req => {
 
     return req;
 });
-
-export const apiMovie;
-
 
 
 export const apiMovieMap = (m) => ({
@@ -25,7 +22,7 @@ export const apiMovieMap = (m) => ({
 
 export default {
     searchMovies: (filter) => {
-        const query = '?' + Object.keys(values).map(k => `${k}=${values[k]}&`).join('');
+        const query = '?' + Object.keys(filter).map(k => `${k}=${filter[k]}&`).join('');
         return apiMovie.get('/search/movie' + query)
             .then(response => response.data.results)
             .then(moviesApi => moviesApi.map(apiMovieMap))

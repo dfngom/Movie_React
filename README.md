@@ -85,4 +85,4 @@ Installation de react-router
 $ npm i react-router-dom
 
 Installation de differente paquet
-$ npm i redux react-redux redux-logger redux devtools-extension redux-thunk reselect react-loadable
+$ npm i redux react-redux redux-logger redux-devtools-extension redux-thunk reselect react-loadable

@@ -2,12 +2,24 @@ import React from 'react';
 import { MovieDetails, MovieList, SearchBar } from './components';
 import Loading from '../../components/utils/Loading';
 import { connect } from 'react-redux';
-import { moviesIsLoadingSelector, moviesListSelector, favorisListNameSelector, moviesSelectedMovieSelector } from '../../store/selectors';
+import {
+    moviesIsLoadingSelector,
+    moviesListSelector,
+    favorisListNameSelector,
+    moviesSelectedMovieSelector
+} from '../../store/selectors';
+
+import {
+    fetchMovies,
+    setSelectedMovie,
+    tryRemoveFavori,
+    tryAddFavori
+} from '../../store/actions';
 
 const Films = (props) => {
     return (
         <>
-            <SearchBar updateMovies={props.fetchMovies} />
+            <SearchBar fetchMovies={props.fetchMovies} />
             {props.isLoading ? (
                 <Loading />
             ) : (

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Header } from './components';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import Loadable from 'react-loadable';
+import { fetchFavoris } from './store/actions';
+// import { fecthFavoris as fecthFavoris } from './store/favoris/favoris.actions';
 import { connect } from 'react-redux';
-import { fecthFavoris } from './store/actions';
+
 
 
 
@@ -22,7 +24,7 @@ const LazyFavoris = Loadable({
 
 class App extends Component {
   componentDidMount() {
-    this.props.fecthFavoris();
+    this.props.fetchFavoris();
   }
 
   render() {
@@ -40,6 +42,6 @@ class App extends Component {
 
 }
 
-export default connect(null, {
-  fecthFavoris
-})(App);
+export default withRouter(connect(null, {
+  fetchFavoris
+})(App));
